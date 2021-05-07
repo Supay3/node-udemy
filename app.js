@@ -9,7 +9,8 @@ app.get('/favicon.ico', (req, res) => res.status(204));
 
 app.use(express.urlencoded({extended: true}));
 
-app.use(adminRoutes, shopRoutes);
+app.use('/admin', adminRoutes);
+app.use(shopRoutes);
 
 app.use((req, res) => {
     res.status(404).send('<h1>404 Page not found</h1>');
