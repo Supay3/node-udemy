@@ -4,6 +4,8 @@ const express = require('express');
 
 const app = express();
 
+app.set('view engine', 'pug');
+
 const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
@@ -16,7 +18,7 @@ app.use('/admin', adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'views', '404_not_found.html'));
+    res.status(404).render('404');
 });
 
 app.listen(3000);
